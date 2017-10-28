@@ -37,7 +37,6 @@ public class PrimeArrayCreator {
 		for (int i = prime; i < endOfRange; i++) {
 			nextPrime = i+1;
 			if (isPrime(nextPrime)) {
-				System.out.println(nextPrime);
 				return nextPrime;
 			}
 		}
