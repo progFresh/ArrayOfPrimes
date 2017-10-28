@@ -24,6 +24,8 @@ public class PrimeArrayCreator {
 				randomArray[fillingCellNumber] = begingOfRange;
 			} else {
 				randomArray[fillingCellNumber] = getNext(randomArray[fillingCellNumber-1]);
+				if (randomArray[fillingCellNumber] > 100) throw new IllegalArgumentException(
+						"введена размерность, при которой значения внутри массива превышают [2:10^9]"); 
 			}
 			fillingCellNumber += 1;
 		}
