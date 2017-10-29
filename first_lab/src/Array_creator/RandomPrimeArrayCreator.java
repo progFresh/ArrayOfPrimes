@@ -1,7 +1,8 @@
-package first_lab;
+package Array_creator;
+
 import java.util.concurrent.ThreadLocalRandom;
 
-public class PrimeArrayCreator {
+public class RandomPrimeArrayCreator implements RandomArrayCreator {
 
 	// MARK: - Properties
 
@@ -11,7 +12,8 @@ public class PrimeArrayCreator {
 
 	// MARK: - Internal helpers
 
-	public int getRandomPrime() {
+	@Override
+	public int getRandomNumber() {
 		int randomNum = ThreadLocalRandom.current().nextInt(begingOfRange, endOfRange);
 		if (isPrime(randomNum)) {
 			return randomNum;
@@ -27,7 +29,7 @@ public class PrimeArrayCreator {
 		return -1;
 	}
 
-	// Throws
+	@Override // Throws
 	public int[] getRandomArray(int length) {
 		int[] randomArray = new int[length];
 		int fillingCellNumber = 0;
