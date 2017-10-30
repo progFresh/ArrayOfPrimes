@@ -18,4 +18,6 @@ public class Constants {
 	public static String errorInput = "ОШИБКА: Неправильный ввод данных";
 
 	public static String inputLength = "Введите размерность массива";
+	
+	public static String negaticeSizeException = "ОШИБКА :введена отрицательная размерность массива";
 }

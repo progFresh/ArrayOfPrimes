@@ -2,19 +2,19 @@ package Main;
 
 import Array_creator.*;
 import java.util.Scanner;
+import java.lang.NegativeArraySizeException;
 
 public class Main {
 
-	// MARK: - Main
+	// - Main
 
 	public static void main(String[] args) {
 		RandomArrayCreator randomPrimeArrayCreator = new RandomPrimeArrayCreator();
 		Scanner scanner = new Scanner(System.in);
-		String outCondition = "n";
 		String chosenCondition;
 
 		System.out.println(Constants.descriptionProgramText);
-		while (outCondition != "y") {
+		while (true) {
 			System.out.println(Constants.inputСonditions);
 			chosenCondition = scanner.nextLine();
 			if ( chosenCondition.equals("1") ) {
@@ -23,25 +23,45 @@ public class Main {
 				showRandomPrimeArray(randomPrimeArrayCreator, scanner);
 			} else {
 				System.out.println(Constants.errorInput);
+				setStandbyMode(scanner);
 			}
 			System.out.println(Constants.divider);
 		}
 	}
 
-	// MARK: - Private helpers
+	// - Private helpers
 
 	private static void showRandomPrime(RandomArrayCreator randomPrimeArrayCreator, Scanner scanner) {
 		int randomNumber = randomPrimeArrayCreator.getRandomNumber();
 		System.out.println("Случайное число: " + randomNumber);
+		setStandbyMode(scanner);
 	}
 
 	private static void showRandomPrimeArray(RandomArrayCreator randomPrimeArrayCreator, Scanner scanner) {
 		System.out.println(Constants.inputLength);
 		if (scanner.hasNextInt()) {
 			int length = scanner.nextInt();
-			System.out.println("\"вывод массива\"");
+			try {
+				int[] primeArray = randomPrimeArrayCreator.getRandomArray(length);
+				System.out.println("Массив:");
+				for (int i = 0; i<length; i++) {
+					System.out.println("a[" + i + "] = " + primeArray[i]);
+				}
+				setStandbyMode(scanner);
+			} catch (IllegalArgumentException exception) {
+				System.out.println(exception);
+				setStandbyMode(scanner);
+			} catch (NegativeArraySizeException negativeSize) {
+				System.out.println(Constants.negaticeSizeException);
+				setStandbyMode(scanner);
+			}	
 		} else {
 			System.out.println(Constants.errorInput);
+			setStandbyMode(scanner);
 		}
+	}
+
+	private static void setStandbyMode(Scanner scanner) {
+		scanner.nextLine();
 	}
 }

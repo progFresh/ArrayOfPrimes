@@ -4,13 +4,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomPrimeArrayCreator implements RandomArrayCreator {
 
-	// MARK: - Properties
+	// - Properties
 
 	private String errorText = "введена размерность, при которой значения внутри массива превышают [2:10^9]";
 	private int begingOfRange = 2;
 	private int endOfRange = 100;
 
-	// MARK: - Internal helpers
+	// - Internal helpers
 
 	@Override
 	public int getRandomNumber() {
@@ -46,7 +46,7 @@ public class RandomPrimeArrayCreator implements RandomArrayCreator {
 		return randomArray;
 	}
 
-	// MARK: - Private helpers
+	// - Private helpers
 
 	private int getNext(int prime) {
 		int nextPrime;
