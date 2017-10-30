@@ -8,7 +8,7 @@ public class RandomPrimeArrayCreator implements RandomArrayCreator {
 
 	private String errorText = "введена размерность, при которой значения внутри массива превышают [2:10^9]";
 	private int begingOfRange = 2;
-	private int endOfRange = 100;
+	private int endOfRange = 1000000000; //1 000 000 000
 
 	// - Internal helpers
 
