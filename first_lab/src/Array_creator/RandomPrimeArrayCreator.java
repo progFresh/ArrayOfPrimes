@@ -2,6 +2,17 @@ package Array_creator;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+* RandomPrimeArrayCreator allow generate random
+* number in range [1...10^9] and array of primes of
+* "length" dimension. This array is sorted in ascending order.
+*
+* @author  Polozov Sergey
+* @version 1.0
+* @since   2017-11-12
+* @see RandomArrayCreator
+*/
+
 public class RandomPrimeArrayCreator implements RandomArrayCreator {
 
 	// - Properties
@@ -12,7 +23,12 @@ public class RandomPrimeArrayCreator implements RandomArrayCreator {
 
 	// - Internal helpers
 
-	@Override
+	/**
+	   * Generates random number in range [1...10^9]
+	   * @override Parent's method
+	   * @return int This returns generated random number
+	   */ 
+
 	public int getRandomNumber() {
 		int randomNum = ThreadLocalRandom.current().nextInt(begingOfRange, endOfRange);
 		if (isPrime(randomNum)) {
@@ -29,7 +45,20 @@ public class RandomPrimeArrayCreator implements RandomArrayCreator {
 		return -1;
 	}
 
-	@Override // Throws
+	/**
+	   * This method is used to generate array of 
+	   * primes in range [1...10^9] of "length" dimension
+	   * 
+	   * @override Parent's method
+	   * @param length This parameter get int value and 
+	   * is dimension of array
+	   * @throws IllegalArgumentException
+	   * it can be when received length don't allow
+	   * to generate array fir in the range
+	   * @return int[] This returns generated array of 
+	   * primes
+	   */
+
 	public int[] getRandomArray(int length) {
 		int[] randomArray = new int[length];
 		int fillingCellNumber = 0;
@@ -48,6 +77,17 @@ public class RandomPrimeArrayCreator implements RandomArrayCreator {
 
 	// - Private helpers
 
+	/**
+	   * This method is used to get next prime after 
+	   * input parameter.
+	   * @param prime This parameter get int value.
+	   * The parameter is prime number for generating
+	   * next prime number.
+	   * @return int This returns next prime. But
+	   * if next prime will be more than 10^9 
+	   * return value will be -1
+	   */
+
 	private int getNext(int prime) {
 		int nextPrime;
 		for (int i = prime; i < endOfRange; i++) {
@@ -59,6 +99,17 @@ public class RandomPrimeArrayCreator implements RandomArrayCreator {
 		return -1;
 	}
 
+	/**
+	   * This method is used to get previous prime of 
+	   * input parameter.
+	   * @param arg This parameter get int value.
+	   * The parameter is prime number for generating
+	   * previous prime number.
+	   * @return int This returns previous prime. But
+	   * if previous prime will be less than 2 
+	   * return value will be -1
+	   */
+
 	private int getPrevious(int arg) {
 		int previousPrime;
 		for (int i = arg; i > begingOfRange; i--) {
@@ -69,6 +120,14 @@ public class RandomPrimeArrayCreator implements RandomArrayCreator {
 		}
 		return -1;
 	}
+
+	/**
+	   * This method is used to know if input parameter is prime.
+	   * @param arg This parameter get int value. The parameter
+	   * if getting to determine if it is prime.
+	   * @return boolean This returns if input
+	   * parameter is prime or not
+	   */
 
 	private boolean isPrime(int arg) {
 		if (arg == 2) 
