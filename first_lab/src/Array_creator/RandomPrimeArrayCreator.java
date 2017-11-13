@@ -25,7 +25,6 @@ public class RandomPrimeArrayCreator implements RandomArrayCreator {
 
 	/**
 	   * Generates random number in range [1...10^9]
-	   * @override Parent's method
 	   * @return int This returns generated random number
 	   */ 
 
@@ -48,8 +47,6 @@ public class RandomPrimeArrayCreator implements RandomArrayCreator {
 	/**
 	   * This method is used to generate array of 
 	   * primes in range [1...10^9] of "length" dimension
-	   * 
-	   * @override Parent's method
 	   * @param length This parameter get int value and 
 	   * is dimension of array
 	   * @throws IllegalArgumentException
