@@ -8,8 +8,13 @@ public class Main {
 	// - Main
 	
 	public static void main(String[] args) {
-		JFrame myWindow = new StartWindow();
-		myWindow.setVisible(true);
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrame.setDefaultLookAndFeelDecorated(true);
+                JFrame startWindow = new StartWindow();
+        			startWindow.setVisible(true);
+            }
+        });
 	}
 	
 	// Private helpers
