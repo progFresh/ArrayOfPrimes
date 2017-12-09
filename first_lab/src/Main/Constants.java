@@ -11,7 +11,7 @@ public class Constants {
 			+ "\n"
 			+ "чтобы отобразить массив простых чисел введите 2:";
 
-	public static String divider = "-----------";
+	public static String secondWindowTopLabel = "количество чисел";
 
 	public static String errorInput = "ОШИБКА: Неправильный ввод данных";
 
