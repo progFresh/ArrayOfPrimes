@@ -3,11 +3,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.NumberFormat;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.NumberFormatter;
 
 public class SecondWindow extends JFrame {
 	
@@ -64,6 +62,14 @@ public class SecondWindow extends JFrame {
 	}
 
 	private void watchButtonAction () {
-		System.out.println("works!!");
+		String stringFromField = textField.getText();
+		Integer arrayNumber = null;
+	    try {
+	    		arrayNumber = Integer.valueOf(stringFromField);
+	    		System.out.println("yep");
+	    }
+	    catch(NumberFormatException e) {
+	    		JOptionPane.showMessageDialog(null, "Неверный ввод");
+	    }
 	}
 }
