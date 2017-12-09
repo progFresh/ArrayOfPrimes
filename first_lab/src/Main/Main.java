@@ -1,6 +1,5 @@
 package Main;
 
-import Array_creator.*;
 import javax.swing.*;
 
 public class Main {
