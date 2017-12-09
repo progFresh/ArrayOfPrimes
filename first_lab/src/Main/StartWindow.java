@@ -23,7 +23,7 @@ public class StartWindow extends JFrame {
 	// - Constructor
 	public StartWindow() {
 		super(programTitle);		
-		this.setBounds(400,200,400,450);
+		this.setBounds(350,200,700,450);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    //  Panel
