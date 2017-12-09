@@ -3,9 +3,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import Array_creator.RandomArrayCreator;
+import Array_creator.RandomPrimeArrayCreator;
 
 public class SecondWindow extends JFrame {
 	
@@ -17,6 +19,10 @@ public class SecondWindow extends JFrame {
 	private JLabel topLabel;
 	private JTextField textField;
 	private JButton watchButton;
+	private JList<String> jlist;
+	private JScrollPane scroll;
+	private RandomArrayCreator randomPrimeArrayCreator = new RandomPrimeArrayCreator();
+	private String[] emptyArray = {""};
 
 	// - Constructor
 	public SecondWindow() {
@@ -59,17 +65,56 @@ public class SecondWindow extends JFrame {
           }
         });
         secondWindowPanel.add(watchButton);
+        
+        // JList and scroll pane
+        jlist = new JList<String>(emptyArray);
+        jlist.setLayoutOrientation(JList.VERTICAL);
+        jlist.setVisibleRowCount(0);
+        scroll = new JScrollPane(jlist);
+        scroll.setPreferredSize(new Dimension(100, 100));
+        secondWindowPanel.add(scroll);
 	}
 
 	private void watchButtonAction () {
 		String stringFromField = textField.getText();
-		Integer arrayNumber = null;
 	    try {
-	    		arrayNumber = Integer.valueOf(stringFromField);
-	    		System.out.println("yep");
+	    		Integer arrayLength = null;
+	    		arrayLength = Integer.valueOf(stringFromField);
+	    		getArrayOfPriems(arrayLength);
 	    }
 	    catch(NumberFormatException e) {
 	    		JOptionPane.showMessageDialog(null, "Неверный ввод");
-	    }
+	    		clearJlist();
+	    } 
+	}
+	
+	private void getArrayOfPriems(int arrayLength) {
+		if (arrayLength == 0) {
+			JOptionPane.showMessageDialog(null, " неверный ввод");
+			clearJlist();
+		} else {
+			try {
+				int[] primeArray = randomPrimeArrayCreator.getRandomArray(arrayLength);
+				showArrayOfPrimes(primeArray);
+			} catch (IllegalArgumentException exception) {
+				JOptionPane.showMessageDialog(null, "количество простых чисел не помещается в диапазон");
+				clearJlist();
+			} catch (NegativeArraySizeException negativeSize) {
+				JOptionPane.showMessageDialog(null, "вы ввели отрицательное число");
+				clearJlist();
+			}
+		}
+	}
+
+	private void showArrayOfPrimes(int[] array) {
+		String[] stringList = new String[array.length];
+		for (int i = 0; i<stringList.length; i++) {
+			stringList[i] = ("a[" + i + "] = " + array[i]);
+		}
+		this.jlist.setListData(stringList);
+	}
+
+	private void clearJlist() {
+		this.jlist.setListData(emptyArray);
 	}
 }
